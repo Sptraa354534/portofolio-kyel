@@ -27,11 +27,6 @@ export default function About() {
               menggunakan UML. Saya juga antusias di bidang Data Analysis dan
               Data Design.
             </p>
-            <p>
-              Di luar coding, saya aktif sebagai atlet Karate dan pernah meraih
-              berbagai kejuaraan daerah — yang mengajarkan saya disiplin,
-              ketangguhan, dan semangat kompetisi.
-            </p>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
