@@ -8,7 +8,7 @@ const education = [
     major: "D3 Teknik Informatika",
     activities: [
       "Magang di Yayasan Daarut Tauhiid Bandung",
-      "Proyek akhir: Sistem Tracking Barang Berbasis Web",
+      "Proyek akhir: Sistem Tracking Barang Berbasis Aplikasi",
     ],
     current: true,
   },
