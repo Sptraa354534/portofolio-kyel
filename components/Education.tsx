@@ -6,7 +6,6 @@ const education = [
     institution: "Universitas Logistik dan Bisnis Internasional (ULBI)",
     city: "Bandung",
     major: "D3 Teknik Informatika",
-    gpa: "3.28 / 4.00",
     activities: [
       "Magang di Yayasan Daarut Tauhiid Bandung",
       "Proyek akhir: Sistem Tracking Barang Berbasis Web",
@@ -18,7 +17,6 @@ const education = [
     institution: "SMK Negeri 3 Palu",
     city: "Palu, Sulawesi Tengah",
     major: "Teknik Komputer dan Jaringan (TKJ)",
-    gpa: null,
     activities: ["PKL Magang di Dinas Sosial Provinsi Sulawesi Tengah"],
     current: false,
   },

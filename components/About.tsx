@@ -60,7 +60,6 @@ export default function About() {
             {[
               { key: "Nama", value: "Kyel Rui Saputra Saroinsong" },
               { key: "Pendidikan", value: "D3 Teknik Informatika — ULBI" },
-              { key: "GPA", value: "3.28 / 4.00" },
               { key: "Lokasi", value: "Palu, Sulawesi Tengah" },
               { key: "Status", value: "Fresh Graduate 2025" },
               { key: "Fokus", value: "Web Dev & Data Analysis" },
