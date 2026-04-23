@@ -19,7 +19,7 @@ export default function About() {
                 Kyel Rui Saputra Saroinsong
               </span>
               , lulusan D3 Teknik Informatika dari Universitas Logistik dan
-              Bisnis Internasional, Bandung dengan IPK 3.28/4.00.
+              Bisnis Internasional, Bandung
             </p>
             <p>
               Berpengalaman membangun aplikasi web berbasis PHP & CodeIgniter,

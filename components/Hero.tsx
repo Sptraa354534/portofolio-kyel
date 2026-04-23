@@ -191,7 +191,6 @@ export default function Hero() {
         >
           {[
             { value: "4", label: "Projects" },
-            { value: "3.28", label: "GPA / 4.00" },
             { value: "4+", label: "Sertifikasi" },
             { value: "2025", label: "Fresh Graduate" },
           ].map((s) => (
