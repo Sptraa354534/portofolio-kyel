@@ -183,7 +183,7 @@ export default function Hero() {
 
         {/* Stats row */}
         <div
-          className="mt-24 pt-8 border-t border-border grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="mt-24 pt-8 border-t border-border grid grid-cols-2 md:grid-cols-3 gap-8"
           style={{
             opacity: 0,
             animation: "fadeUp 0.7s ease 0.7s forwards",
