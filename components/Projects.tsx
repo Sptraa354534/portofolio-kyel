@@ -13,6 +13,8 @@ type Project = {
   highlights: string[];
   type: string;
   year: string;
+  thumbnail: string;       // Gambar utama untuk preview di header
+  images: string[];        // Galeri gambar di expanded detail
 };
 
 const projects: Project[] = [
@@ -35,30 +37,24 @@ const projects: Project[] = [
     ],
     type: "Web App",
     year: "2024",
+    thumbnail: "/project 1/Dashboard.jpeg",
+    images: [
+      "/project 1/login.jpeg",
+      "/project 1/Registrasi.jpeg",
+      "/project 1/Dashboard.jpeg",
+      "/project 1/Input Barang Masuk.jpeg",
+      "/project 1/Daftar Barang Masuk.jpeg",
+      "/project 1/Edit Data Barang Masuk.jpeg",
+      "/project 1/Tambah Stok Barang.jpeg",
+      "/project 1/Mengeluarkan Data Barang Masuk.jpeg",
+      "/project 1/Daftar Barang Keluar.jpeg",
+      "/project 1/Scan Barcode Barang.jpeg",
+      "/project 1/Cetak Data Barang.jpeg",
+    ],
   },
   {
     id: 2,
     number: "02",
-    title: "Aplikasi Tracking Barang & Chatbot WhatsApp NLP",
-    subtitle: "Layanan Service & Logistik",
-    description:
-      "Sistem tracking barang menggunakan nomor resi dari kurir ekspedisi, dipadukan dengan chatbot WhatsApp berbasis NLP yang menjawab pertanyaan terkait tracking dan layanan service secara otomatis.",
-    stack: ["PHP", "MySQL", "NLP", "WhatsApp API", "CodeIgniter", "UML", "API Barang"],
-    backendStack: ["PHP", "MySQL", "NLP Algorithm", "WhatsApp Business API"],
-    frontendStack: ["HTML5", "CSS3", "JavaScript"],
-    highlights: [
-      "Integrasi tracking barang via nomor resi kurir",
-      "Chatbot WhatsApp otomatis berbasis NLP",
-      "Jawaban real-time untuk pertanyaan service & tracking",
-      "Mengurangi beban customer service secara signifikan",
-      "Arsitektur sistem dirancang dengan UML",
-    ],
-    type: "Web App + Chatbot",
-    year: "2025",
-  },
-  {
-    id: 3,
-    number: "03",
     title: "Tracking Barang + Chatbot — Website & Layanan Logistik",
     subtitle: "Sistem Informasi Logistik",
     description:
@@ -75,11 +71,62 @@ const projects: Project[] = [
     ],
     type: "Web App",
     year: "2024",
+    thumbnail: "/project 2/Halaman Utama.jpeg",
+    images: [
+      "/project 2/Halaman Utama.jpeg",
+      "/project 2/Fitur Cek Resi.jpeg",
+      "/project 2/Tampilan Hasil Cek Resi.jpeg",
+      "/project 2/Pop Up Whatsapp Chatbot.jpeg",
+      "/project 2/Chatbot Whatsapp.jpeg",
+    ],
+  },
+  {
+    id: 3,
+    number: "03",
+    title: "Aplikasi Tracking Barang & Chatbot WhatsApp NLP",
+    subtitle: "Layanan Service & Logistik",
+    description:
+      "Sistem tracking barang menggunakan nomor resi dari kurir ekspedisi, dipadukan dengan chatbot WhatsApp berbasis NLP yang menjawab pertanyaan terkait tracking dan layanan service secara otomatis.",
+    stack: ["PHP", "MySQL", "NLP", "WhatsApp API", "CodeIgniter", "UML", "API Barang"],
+    backendStack: ["PHP", "MySQL", "NLP Algorithm", "WhatsApp Business API"],
+    frontendStack: ["HTML5", "CSS3", "JavaScript"],
+    highlights: [
+      "Integrasi tracking barang via nomor resi kurir",
+      "Chatbot WhatsApp otomatis berbasis NLP",
+      "Jawaban real-time untuk pertanyaan service & tracking",
+      "Mengurangi beban customer service secara signifikan",
+      "Arsitektur sistem dirancang dengan UML",
+    ],
+    type: "Web App + Chatbot",
+    year: "2025",
+    thumbnail: "/project 3/Landing Page.jpeg",
+    images: [
+      "/project 3/Landing Page.jpeg",
+      "/project 3/Halaman Login.jpeg",
+      "/project 3/Halaman Register.jpeg",
+      "/project 3/Halaman Konfirmasi Lupa Password.jpeg",
+      "/project 3/Halaman Reset Password.jpeg",
+      "/project 3/Tracking Barang Tanpa Login.jpeg",
+      "/project 3/Tracking Barang Dengan Login.jpeg",
+      "/project 3/Halaman Informasi Tracking Cekresi Barang.jpeg",
+      "/project 3/Menu Chatbot Whatsapp.jpeg",
+      "/project 3/Interaksi Chatbot Whatsapp.jpeg",
+    ],
   },
 ];
 
 export default function Projects() {
   const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+
+  const handleProjectClick = (id: number) => {
+    if (activeProject === id) {
+      setActiveProject(null);
+    } else {
+      setActiveProject(id);
+      setActiveImageIndex(0); // reset ke foto pertama saat buka project baru
+    }
+  };
 
   return (
     <section id="projects" className="py-28 px-6 border-t border-border">
@@ -100,17 +147,29 @@ export default function Projects() {
             <div
               key={project.id}
               className="border border-border hover:border-accent/50 transition-all cursor-pointer overflow-hidden"
-              onClick={() =>
-                setActiveProject(
-                  activeProject === project.id ? null : project.id
-                )
-              }
+              onClick={() => handleProjectClick(project.id)}
             >
               {/* Header row */}
               <div className="flex items-center gap-6 p-6 group">
                 <span className="font-display text-4xl text-border group-hover:text-accent/40 transition-colors min-w-[3.5rem]">
                   {project.number}
                 </span>
+
+                {/* Thumbnail */}
+                <div className="hidden sm:block flex-shrink-0 w-16 h-16 overflow-hidden border border-border group-hover:border-accent/40 transition-colors">
+                  <img
+                    src={project.thumbnail}
+                    alt={`Thumbnail ${project.title}`}
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                    onError={(e) => {
+                      // Tampilkan fallback jika gambar belum ada
+                      (e.target as HTMLImageElement).style.display = "none";
+                      (e.target as HTMLImageElement).parentElement!.innerHTML =
+                        `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#1a1a1a;color:#444;font-size:10px;text-align:center;padding:4px;">${project.number}</div>`;
+                    }}
+                  />
+                </div>
+
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-3 mb-1">
                     <h3 className="font-display text-base md:text-lg text-text-main group-hover:text-accent transition-colors">
@@ -147,7 +206,7 @@ export default function Projects() {
               {activeProject === project.id && (
                 <div className="px-6 pb-8 border-t border-border animate-fade-in">
                   <div className="grid md:grid-cols-2 gap-8 mt-6">
-                    {/* Description */}
+                    {/* Description + highlights */}
                     <div>
                       <p className="text-text-sub text-sm leading-relaxed mb-6">
                         {project.description}
@@ -155,9 +214,7 @@ export default function Projects() {
                       <div className="space-y-2">
                         {project.highlights.map((h, i) => (
                           <div key={i} className="flex items-start gap-3">
-                            <span className="text-accent mt-0.5 text-xs">
-                              ▸
-                            </span>
+                            <span className="text-accent mt-0.5 text-xs">▸</span>
                             <span className="text-text-sub text-sm">{h}</span>
                           </div>
                         ))}
@@ -167,15 +224,10 @@ export default function Projects() {
                     {/* Tech stack detail */}
                     <div className="space-y-6">
                       <div>
-                        <p className="section-label mb-3">
-                          BACKEND / DATABASE
-                        </p>
+                        <p className="section-label mb-3">BACKEND / DATABASE</p>
                         <div className="flex flex-wrap gap-2">
                           {project.backendStack.map((t) => (
-                            <span
-                              key={t}
-                              className="tech-tag border-accent/30 text-accent/70"
-                            >
+                            <span key={t} className="tech-tag border-accent/30 text-accent/70">
                               {t}
                             </span>
                           ))}
@@ -185,9 +237,7 @@ export default function Projects() {
                         <p className="section-label mb-3">FRONTEND</p>
                         <div className="flex flex-wrap gap-2">
                           {project.frontendStack.map((t) => (
-                            <span key={t} className="tech-tag">
-                              {t}
-                            </span>
+                            <span key={t} className="tech-tag">{t}</span>
                           ))}
                         </div>
                       </div>
@@ -195,12 +245,60 @@ export default function Projects() {
                         <p className="section-label mb-3">FULL STACK</p>
                         <div className="flex flex-wrap gap-2">
                           {project.stack.map((t) => (
-                            <span key={t} className="tech-tag">
-                              {t}
-                            </span>
+                            <span key={t} className="tech-tag">{t}</span>
                           ))}
                         </div>
                       </div>
+                    </div>
+                  </div>
+
+                  {/* ── GALERI FOTO ── */}
+                  <div className="mt-8" onClick={(e) => e.stopPropagation()}>
+                    <p className="section-label mb-4">SCREENSHOT PROJECT</p>
+
+                    {/* Foto utama yang sedang aktif */}
+                    <div className="w-full aspect-video border border-border overflow-hidden mb-3 bg-[#0e0e0e]">
+                      <img
+                        src={project.images[activeImageIndex]}
+                        alt={`Screenshot ${activeImageIndex + 1} — ${project.title}`}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const el = e.target as HTMLImageElement;
+                          el.style.display = "none";
+                          el.parentElement!.innerHTML = `
+                            <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#333;gap:8px;">
+                              <span style="font-size:32px;">🖼️</span>
+                              <span style="font-size:11px;font-family:monospace;">Ganti path gambar di data project</span>
+                            </div>`;
+                        }}
+                      />
+                    </div>
+
+                    {/* Thumbnail strip */}
+                    <div className="flex gap-2 overflow-x-auto pb-1">
+                      {project.images.map((img, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setActiveImageIndex(idx)}
+                          className={`flex-shrink-0 w-20 h-14 border overflow-hidden transition-all ${
+                            activeImageIndex === idx
+                              ? "border-accent opacity-100"
+                              : "border-border opacity-40 hover:opacity-70"
+                          }`}
+                        >
+                          <img
+                            src={img}
+                            alt={`Thumb ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const el = e.target as HTMLImageElement;
+                              el.style.display = "none";
+                              el.parentElement!.style.background = "#1a1a1a";
+                              el.parentElement!.innerHTML += `<span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:10px;color:#444;">${idx + 1}</span>`;
+                            }}
+                          />
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </div>
