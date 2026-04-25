@@ -37,19 +37,19 @@ const projects: Project[] = [
     ],
     type: "Web App",
     year: "2024",
-    thumbnail: "/project 1/Dashboard.jpeg",
+    thumbnail: "/project%201/Dashboard.jpeg",
     images: [
-      "/project 1/login.jpeg",
-      "/project 1/Registrasi.jpeg",
-      "/project 1/Dashboard.jpeg",
-      "/project 1/Input Barang Masuk.jpeg",
-      "/project 1/Daftar Barang Masuk.jpeg",
-      "/project 1/Edit Data Barang Masuk.jpeg",
-      "/project 1/Tambah Stok Barang.jpeg",
-      "/project 1/Mengeluarkan Data Barang Masuk.jpeg",
-      "/project 1/Daftar Barang Keluar.jpeg",
-      "/project 1/Scan Barcode Barang.jpeg",
-      "/project 1/Cetak Data Barang.jpeg",
+      "/project%201/login.jpeg",
+      "/project%201/Registrasi.jpeg",
+      "/project%201/Dashboard.jpeg",
+      "/project%201/Input%20Barang%20Masuk.jpeg",
+      "/project%201/Daftar%20Barang%20Masuk.jpeg",
+      "/project%201/Edit%20Data%20Barang%20Masuk.jpeg",
+      "/project%201/Tambah%20Stok%20Barang.jpeg",
+      "/project%201/Mengeluarkan%20Data%20Barang%20Masuk.jpeg",
+      "/project%201/Daftar%20Barang%20Keluar.jpeg",
+      "/project%201/Scan%20Barcode%20Barang.jpeg",
+      "/project%201/Cetak%20Data%20Barang.jpeg",
     ],
   },
   {
@@ -71,13 +71,13 @@ const projects: Project[] = [
     ],
     type: "Web App",
     year: "2024",
-    thumbnail: "/project 2/Halaman Utama.jpeg",
+    thumbnail: "/project%202/Halaman%20Utama.jpeg",
     images: [
-      "/project 2/Halaman Utama.jpeg",
-      "/project 2/Fitur Cek Resi.jpeg",
-      "/project 2/Tampilan Hasil Cek Resi.jpeg",
-      "/project 2/Pop Up Whatsapp Chatbot.jpeg",
-      "/project 2/Chatbot Whatsapp.jpeg",
+      "/project%202/Halaman%20Utama.jpeg",
+      "/project%202/Fitur%20Cek%20Resi.jpeg",
+      "/project%202/Tampilan%20Hasil%20Cek%20Resi.jpeg",
+      "/project%202/Pop%20Up%20Whatsapp%20Chatbot.jpeg",
+      "/project%202/Chatbot%20Whatsapp.jpeg",
     ],
   },
   {
@@ -99,18 +99,18 @@ const projects: Project[] = [
     ],
     type: "Web App + Chatbot",
     year: "2025",
-    thumbnail: "/project 3/Landing Page.jpeg",
+    thumbnail: "/project%203/Landing%20Page.jpeg",
     images: [
-      "/project 3/Landing Page.jpeg",
-      "/project 3/Halaman Login.jpeg",
-      "/project 3/Halaman Register.jpeg",
-      "/project 3/Halaman Konfirmasi Lupa Password.jpeg",
-      "/project 3/Halaman Reset Password.jpeg",
-      "/project 3/Tracking Barang Tanpa Login.jpeg",
-      "/project 3/Tracking Barang Dengan Login.jpeg",
-      "/project 3/Halaman Informasi Tracking Cekresi Barang.jpeg",
-      "/project 3/Menu Chatbot Whatsapp.jpeg",
-      "/project 3/Interaksi Chatbot Whatsapp.jpeg",
+      "/project%203/Landing%20Page.jpeg",
+      "/project%203/Halaman%20Login.jpeg",
+      "/project%203/Halaman%20Register.jpeg",
+      "/project%203/Halaman%20Konfirmasi%20Lupa%20Password.jpeg",
+      "/project%203/Halaman%20Reset%20Password.jpeg",
+      "/project%203/Tracking%20Barang%20Tanpa%20Login.jpeg",
+      "/project%203/Tracking%20Barang%20Dengan%20Login.jpeg",
+      "/project%203/Halaman%20Informasi%20Tracking%20Cekresi%20Barang.jpeg",
+      "/project%203/Menu%20Chatbot%20Whatsapp.jpeg",
+      "/project%203/Interaksi%20Chatbot%20Whatsapp.jpeg",
     ],
   },
 ];
@@ -257,11 +257,11 @@ export default function Projects() {
                     <p className="section-label mb-4">SCREENSHOT PROJECT</p>
 
                     {/* Foto utama yang sedang aktif */}
-                    <div className="w-full aspect-video border border-border overflow-hidden mb-3 bg-[#0e0e0e]">
+                    <div className="w-full border border-border overflow-hidden mb-3 bg-[#0e0e0e] flex items-center justify-center">
                       <img
                         src={project.images[activeImageIndex]}
                         alt={`Screenshot ${activeImageIndex + 1} — ${project.title}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto object-contain max-h-[600px]"
                         onError={(e) => {
                           const el = e.target as HTMLImageElement;
                           el.style.display = "none";
